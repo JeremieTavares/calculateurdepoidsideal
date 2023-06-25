@@ -14,12 +14,9 @@
     width: 100%;
   }
 
-
-  
-
   .div-gender-f {
     width: 200px !important;
-    height: 200px !important;
+    height: 200px;
     background: #ff9a9e;
     border-radius: 10px;
   }
@@ -27,7 +24,7 @@
   .div-gender-h {
 
     width: 200px !important;
-    height: 200px !important;
+    height: 200px;
     background: hsl(199, 100%, 80%);
     border-radius: 10px;
   }
@@ -45,3 +42,9 @@
   svg {
     height: 100px;
   }
+
+@media (max-width: 992px){
+    .div-gender-f, .div-gender-h{
+        height: 180px;
+    }
+}
