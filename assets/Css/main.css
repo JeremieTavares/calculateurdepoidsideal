@@ -1,0 +1,45 @@
+.data {
+    background-color: #dededefa;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 50px;
+    color: #282828f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .div-gender {
+    width: 100%;
+  }
+
+  .div-gender-f {
+    width: 200px !important;
+    height: 200px !important;
+    background: #ff9a9e;
+    border-radius: 10px;
+  }
+
+  .div-gender-h {
+
+    width: 200px !important;
+    height: 200px !important;
+    background: hsl(199, 100%, 80%);
+    border-radius: 10px;
+  }
+
+  .unchecked {
+    background: #d1d1d1bd !important;
+  }
+
+  input[type="radio"] {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+  }
+
+  svg {
+    height: 100px;
+  }
