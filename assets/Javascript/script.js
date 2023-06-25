@@ -4,11 +4,9 @@ let calculator = new InteractWithCalculator();
 const displayValue = () => {
     const genderChoice = document.querySelectorAll("input[type='radio']");
     const heightChoice = document.querySelector("input[type='text']");
-    const divError = document.querySelector("#divError");
+    const HEIGHT_REGEX = /^[0-9]+\.[0-9]+$|^[0-9]+$/;
     genderChoice.forEach(radio => {
-
         radio.addEventListener('click', (e) => {
-
             switch (e.target.id) {
                 case 'homme':
                     genderChoice[1].parentElement.classList.add('unchecked')
@@ -22,16 +20,16 @@ const displayValue = () => {
                     break;
             }
 
-            if (heightChoice.value != '' && heightChoice.value.match(/^[0-9]*\.?[0-9]*$/)) {
+            if (heightChoice.value != '' && heightChoice.value.match(HEIGHT_REGEX)) {
                 calculator.init();
             }
-            
+
         })
     })
 
     heightChoice.addEventListener('input', () => {
 
-        if (!heightChoice.value.match(/^[0-9]*\.?[0-9]*$/)) {
+        if (!heightChoice.value.match(HEIGHT_REGEX)) {
             heightChoice.classList.add("is-invalid");
         } else {
             heightChoice.classList.remove("is-invalid");
@@ -39,7 +37,7 @@ const displayValue = () => {
 
         calculator.setHeight(heightChoice.value);
 
-        if ((genderChoice[0].checked || genderChoice[1].checked) && heightChoice.value.match(/^[0-9]*\.?[0-9]*$/)) {
+        if ((genderChoice[0].checked || genderChoice[1].checked) && heightChoice.value.match(HEIGHT_REGEX)) {
             calculator.init();
         }
     })
