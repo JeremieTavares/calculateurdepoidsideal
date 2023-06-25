@@ -2,139 +2,168 @@
 <html lang="en" class="h-100">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
-<body class="h-100 d-flex align-items-center">
-    <style>
-        .data {background-color: #dededefa;
-        padding: 5px;
-        display: inline-block;
-        border-radius: 10px;
+<body class="h-100 d-flex align-items-center justify-content-center">
+  <style>
+    .data {
+      background-color: #dededefa;
+      padding: 5px;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    .div-gender {
+      width: 100%;
+    }
+
+    .div-gender-f {
+      width: 200px !important;
+      height: 200px !important;
+      background: #ff9a9e;
+      border-radius: 10px;
+    }
+
+    .div-gender-h {
+
+      width: 200px !important;
+      height: 200px !important;
+      background: hsl(199, 100%, 80%);
+      border-radius: 10px;
+    }
+
+    input[type="radio"] {
+      height: 0px;
+      width: 0px;
+      visibility: hidden;
+    }
+
+    svg {
+      height: 100px;
+    }
+  </style>
+
+  <div class="result text-center mb-5">
+    <h1 id="titleResult">
+    </h1>
+
+    <br>
+    <h1 id="subtitleResp">
+    </h1>
+  </div>
+
+  <script>
+    class Calculator {
+      static Sum(a, b) {
+        return a + b;
+      }
+
+      static Substract(a, b) {
+        return a - b;
+      }
+
+      static Multiply(a, b) {
+        return a * b;
+      }
+
+      static Divide(a, b) {
+        return a / b;
+      }
+    }
+
+    class InteractWithCalculator {
+      _gender;
+      _height;
+      _finalWeight;
+      _minVolume;
+      _maxVolume;
+      calculator;
+      _validGender = ["H", "F"];
+      WEIGTH_TO_SUBS = 152.4;
+      WEIGTH_TO_MUTIPLY = 0.91;
+      MIN_VOLUME_MUTIPLY = 6.00;
+      MAX_VOLUME_MUTIPLY = 8.00;
+
+      constructor() {
+        this.calculator = new Calculator();
+      }
+
+      Init() {
+        this.GetHeight();
+        this.GetGender();
+        this.CalculateHeight();
+        this.GetMinVolume();
+        this.GetMaxVolume();
+        this.DisplayResult();
+      }
+
+      GetHeight() {
+        console.log("Entrez la taille en CM de la personne: ");
+        this._height = parseFloat(prompt("Entrez la taille en CM de la personne: "));
+      }
+
+      GetGender() {
+        console.log("Etes-vous: ");
+        console.log("[H]omme");
+        console.log("[F]emme");
+        let gender = prompt("Veuillez entrer un genre: (H/F)").toUpperCase();
+        while (!this._validGender.includes(gender)) {
+          console.log("Veuillez entrer un genre valide: (H/F)");
+          gender = prompt("Veuillez entrer un genre valide: (H/F)").toUpperCase();
         }
+        this._gender = gender[0];
+      }
 
-        h1{
-          font-size: 50px;
+      GetMinVolume() {
+        this._minVolume = Calculator.Multiply(this._finalWeight, this.MIN_VOLUME_MUTIPLY);
+      }
+
+      GetMaxVolume() {
+        this._maxVolume = Calculator.Multiply(this._finalWeight, this.MAX_VOLUME_MUTIPLY);
+      }
+
+      CalculateHeight() {
+        let newHeight = Calculator.Substract(this._height, this.WEIGTH_TO_SUBS);
+        let weight = Calculator.Multiply(newHeight, this.WEIGTH_TO_MUTIPLY);
+
+        if (this._gender === 'H') {
+          this._finalWeight = Calculator.Sum(weight, 50);
+        } else {
+          this._finalWeight = Calculator.Sum(weight, 45);
         }
-    </style>
-        <div class="result text-center mb-5">
-            <h1 id="titleResult">
-              fdsfsdfds
-            </h1>
-           
-            <br>
-            <h1 id="subtitleResp">
-              fdsfds    
-            </h1>
-        </div>
+      }
 
-    <script>
-        class Calculator {
-            static Sum(a, b) {
-              return a + b;
-            }
-          
-            static Substract(a, b) {
-              return a - b;
-            }
-          
-            static Multiply(a, b) {
-              return a * b;
-            }
-          
-            static Divide(a, b) {
-              return a / b;
-            }
-          }
-          
-          class InteractWithCalculator {
-             _gender;
-             _height;
-             _finalWeight;
-             _minVolume;
-             _maxVolume;
-             calculator;
-             _validGender = ["H", "F"];
-             WEIGTH_TO_SUBS = 152.4;
-             WEIGTH_TO_MUTIPLY = 0.91;
-             MIN_VOLUME_MUTIPLY = 6.00;
-             MAX_VOLUME_MUTIPLY = 8.00;
-          
-            constructor() {
-              this.calculator = new Calculator();
-            }
-          
-            Init() {
-              this.GetHeight();
-              this.GetGender();
-              this.CalculateHeight();
-              this.GetMinVolume();
-              this.GetMaxVolume();
-              this.DisplayResult();
-            }
-          
-            GetHeight() {
-              console.log("Entrez la taille en CM de la personne: ");
-              this._height = parseFloat(prompt("Entrez la taille en CM de la personne: "));
-            }
-          
-            GetGender() {
-              console.log("Etes-vous: ");
-              console.log("[H]omme");
-              console.log("[F]emme");
-              let gender = prompt("Veuillez entrer un genre: (H/F)").toUpperCase();
-              while (!this._validGender.includes(gender)) {
-                console.log("Veuillez entrer un genre valide: (H/F)");
-                gender = prompt("Veuillez entrer un genre valide: (H/F)").toUpperCase();
-              }
-              this._gender = gender[0];
-            }
-          
-            GetMinVolume() {
-              this._minVolume = Calculator.Multiply(this._finalWeight, this.MIN_VOLUME_MUTIPLY);
-            }
-          
-            GetMaxVolume() {
-              this._maxVolume = Calculator.Multiply(this._finalWeight, this.MAX_VOLUME_MUTIPLY);
-            }
-          
-            CalculateHeight() {
-              let newHeight = Calculator.Substract(this._height, this.WEIGTH_TO_SUBS);
-              let weight = Calculator.Multiply(newHeight, this.WEIGTH_TO_MUTIPLY);
-          
-              if (this._gender === 'H') {
-                this._finalWeight = Calculator.Sum(weight, 50);
-              } else {
-                this._finalWeight = Calculator.Sum(weight, 45);
-              }
-            }
-          
-          
-            DisplayResult() {
 
-                const titleResult = document.getElementById('titleResult');
-                const subtitleResp = document.getElementById('subtitleResp');
-                titleResult.innerHTML = "Le poids idéal en KG pour une personne de  <span class='data'>" +
-                this._height +
-                "cm </span> dont le sexe est <span class='data'>" +
-                this._gender +
-                "</span> est <br><br> <span class='data'>" + Math.round(this._finalWeight, 2) + "</span> KG - <span class='data'>" + Math.round(this._finalWeight * 2.2, 2) + "</span> LBS";
-          
-                subtitleResp.innerHTML = "Le volume idéal est compris entre <br><br> <span class='data'>" + Math.round(this._minVolume, 2) + "</span>  ml et <span class='data'>" + Math.round(this._maxVolume, 2) + "</span> ml";
-            }
-          }
-          
-          let init = new InteractWithCalculator();
-          init.Init();
-          
-    </script>
+      DisplayResult() {
+
+        const titleResult = document.getElementById('titleResult');
+        const subtitleResp = document.getElementById('subtitleResp');
+        titleResult.innerHTML = "Le poids idéal en KG pour une personne de  <span class='data'>" +
+          this._height +
+          "cm </span> dont le sexe est <span class='data'>" +
+          this._gender +
+          "</span> est <br><br> <span class='data'>" + Math.round(this._finalWeight, 2) + "</span> KG - <span class='data'>" + Math.round(this._finalWeight * 2.2, 2) + "</span> LBS";
+
+        subtitleResp.innerHTML = "Le volume idéal est compris entre <br><br> <span class='data'>" + Math.round(this._minVolume, 2) + "</span>  ml et <span class='data'>" + Math.round(this._maxVolume, 2) + "</span> ml";
+      }
+    }
+
+    let init = new InteractWithCalculator();
+    init.Init();
+
+  </script>
 </body>
 
 </html>
