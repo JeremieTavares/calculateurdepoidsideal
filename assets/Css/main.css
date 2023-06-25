@@ -6,7 +6,6 @@
   }
 
   h1 {
-    font-size: 50px;
     color: #282828f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -14,6 +13,9 @@
   .div-gender {
     width: 100%;
   }
+
+
+  
 
   .div-gender-f {
     width: 200px !important;
