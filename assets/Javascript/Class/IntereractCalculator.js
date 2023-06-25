@@ -63,7 +63,7 @@ export class InteractWithCalculator {
       this._height +
       "cm </span> dont le sexe est <span class='data'>" +
       this._gender +
-      "</span> est: <br><br> <span class='data'>" + Math.round(this._finalWeight, 2) + "</span>kg / <span class='data'>" + Math.round(this._finalWeight * 2.2, 2) + "</span> lbs";
+      "</span>: <br><br> <span class='data'>" + Math.round(this._finalWeight, 2) + "</span>kg / <span class='data'>" + Math.round(this._finalWeight * 2.2, 2) + "</span> lbs";
 
     subtitleResp.innerHTML = "Le volume idéal est compris entre: <br><br> <span class='data'>" + Math.round(this._minVolume, 2) + "</span> - <span class='data'>" + Math.round(this._maxVolume, 2) + "</span> ml";
   }
