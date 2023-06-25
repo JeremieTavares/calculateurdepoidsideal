@@ -3,7 +3,7 @@ let calculator = new InteractWithCalculator();
 
 const displayValue = () => {
   const genderChoice = document.querySelectorAll("input[type='radio']");
-  const heightChoice = document.querySelector("input[type='number']");
+  const heightChoice = document.querySelector("input[type='tel']");
   genderChoice.forEach(radio => {
 
     radio.addEventListener('click', (e) => {
