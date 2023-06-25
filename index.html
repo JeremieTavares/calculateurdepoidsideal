@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
@@ -12,20 +12,26 @@
 
 </head>
 
-<body>
+<body class="h-100 d-flex align-items-center">
     <style>
         .data {background-color: #dededefa;
         padding: 5px;
         display: inline-block;
         border-radius: 10px;
         }
+
+        h1{
+          font-size: 50px;
+        }
     </style>
-        <div class="result text-center">
+        <div class="result text-center mb-5">
             <h1 id="titleResult">
+              fdsfsdfds
             </h1>
            
             <br>
-            <h1 id="subtitleResp">    
+            <h1 id="subtitleResp">
+              fdsfds    
             </h1>
         </div>
 
@@ -86,7 +92,7 @@
               let gender = prompt("Veuillez entrer un genre: (H/F)").toUpperCase();
               while (!this._validGender.includes(gender)) {
                 console.log("Veuillez entrer un genre valide: (H/F)");
-                gender = prompt().toUpperCase();
+                gender = prompt("Veuillez entrer un genre valide: (H/F)").toUpperCase();
               }
               this._gender = gender[0];
             }
