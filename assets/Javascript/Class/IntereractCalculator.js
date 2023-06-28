@@ -59,7 +59,7 @@ export class InteractWithCalculator {
     console.log(this._minVolume);
     const titleResult = document.getElementById('titleResult');
     const subtitleResp = document.getElementById('subtitleResp');
-    titleResult.innerHTML = "Le poids idéal en pour une personne de  <span class='data'>" +
+    titleResult.innerHTML = "Le poids idéal pour une personne de  <span class='data'>" +
       this._height +
       "cm </span> dont le sexe est <span class='data'>" +
       this._gender +
