@@ -4,7 +4,7 @@ let calculator = new InteractWithCalculator();
 const displayValue = () => {
     const genderChoice = document.querySelectorAll("input[type='radio']");
     const heightChoice = document.querySelector("input[type='text']");
-    const HEIGHT_REGEX = /^[1-9]+\.?[0-9]{0,2}$/;
+    const HEIGHT_REGEX = /^[1-9]+(?:\.?|\,)[0-9]{0,2}$/;
     genderChoice.forEach(radio => {
         radio.addEventListener('click', (e) => {
             switch (e.target.id) {
